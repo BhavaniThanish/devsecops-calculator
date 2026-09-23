@@ -1,0 +1,35 @@
+name: Calculator CI and SAST
+
+on:
+  push:
+    branches:
+      - main
+      - feature-calculator
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-and-security:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Unit Tests
+        run: |
+          python -m unittest test_calculator.py
+
+      - name: Run SAST with Bandit
+        uses: PyCQA/bandit-action@v1
+        with:
+          path: .

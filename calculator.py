@@ -15,6 +15,9 @@ def divide(a, b):
         raise ValueError("Cannot divide by zero")
     return a / b
 
+def power(a, b):
+    return a ** b
+
 
 if __name__ == "__main__":
     print("Simple Calculator")
@@ -31,5 +34,7 @@ if __name__ == "__main__":
         print("Result:", multiply(a, b))
     elif operator == "/":
         print("Result:", divide(a, b))
+    elif operator == "^":
+        print("Result:", power(a, b))
     else:
         print("Invalid operator")
